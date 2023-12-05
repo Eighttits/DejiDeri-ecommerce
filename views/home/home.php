@@ -1,4 +1,7 @@
-<?php include 'app/partials/home/header.php' 
+<?php 
+include 'app/partials/home/header.php';
+
+
 ?>
 
 <div class="main digital-store">
@@ -165,55 +168,42 @@
                 </div>
             </div>
             <div class="featured-carousel">
-                <div class="swiper-wrapper">
-                        <div class="featured-item v5">
-                            <div class="featured-item-wrapper">
-                                <div class="featured-item-content">
-                                    <div class="fav-counter"><svg class="crumina-icon">
-                                            <use xlink:href="#heart-icon"></use>
-                                        </svg><span class="count">22</span></div>
-                                    <div class="featured-item-image">
-                                        <a href="06-profile-page.html">
-                                            <img src="img/content/items/featured-item-25.png" alt=""></a>
-                                    </div>
-                                    <div class="featured-item-info">
-                                        <div class="item-category ui-templates">
-                                            UI templates
-                                        </div>
-                                        <div class="title"><a href="05-product.html">Cryptoki - NFT and Digital
-                                                Market...</a>
-                                        </div>
-                                        <div class="item-meta"><span class="avatar box-26"><a href="06-profile-page.html"><img src="img/avatar.png" alt=""></a><span class="verified"><svg class="crumina-icon">
-                                                        <use xlink:href="#check-icon"></use>
-                                                    </svg></span></span>@DexterStark</div>
-                                    </div>
-                                </div>
-                                <div class="featured-item-post-content">
-                                    <div class="item-rating">
-                                        <span class="filled"><svg class="crumina-icon">
-                                                <use xlink:href="#star2-icon"></use>
-                                            </svg></span>
-                                        <span class="filled"><svg class="crumina-icon">
-                                                <use xlink:href="#star2-icon"></use>
-                                            </svg></span>
-                                        <span class="filled"><svg class="crumina-icon">
-                                                <use xlink:href="#star2-icon"></use>
-                                            </svg></span>
-                                        <span class="filled"><svg class="crumina-icon">
-                                                <use xlink:href="#star2-icon"></use>
-                                            </svg></span>
-                                        <span><svg class="crumina-icon">
-                                                <use xlink:href="#star2-icon"></use>
-                                            </svg></span>
-                                    </div>
-                                    <div class="item-price">$12.00</div>
-                                </div>
-                            </div>
+    <div class="swiper-wrapper">
+        <?php foreach ($productos as $producto) { ?>
+            <div class="featured-item v5">
+                <div class="featured-item-wrapper">
+                    <div class="featured-item-content">
+                        <!-- Fav Counter -->
+                        <div class="fav-counter">
+                            <svg class="crumina-icon">
+                                <use xlink:href="#heart-icon"></use>
+                            </svg>
+                            <!-- Aquí puedes agregar la cantidad de favoritos -->
+                            <span class="count"><?php echo $producto['fav_count']; ?></span>
                         </div>
-                    
-
+                        <!-- Imagen del producto -->
+                        <div class="featured-item-image">
+                            <a href="06-profile-page.html">
+                                <img src="<?php echo $producto['image']; ?>" alt="">
+                            </a>
+                        </div>
+                        <!-- Información del producto -->
+                        <div class="featured-item-info">
+                            <div class="item-category"><?php echo $producto['category']; ?></div>
+                            <div class="title"><a href="05-product.html"><?php echo $producto['name']; ?></a></div>
+                            <!-- Puedes mostrar detalles del vendedor o cualquier otra información aquí -->
+                        </div>
+                    </div>
+                    <!-- Precio del producto -->
+                    <div class="featured-item-post-content">
+                        <div class="item-price">$<?php echo $producto['price']; ?></div>
+                    </div>
                 </div>
             </div>
+        <?php } ?>
+    </div>
+</div>
+
         </div>
     </div>
 </div>

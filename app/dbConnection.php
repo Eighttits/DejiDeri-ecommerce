@@ -14,6 +14,8 @@ mysqli_set_charset($conn, $encode);
 
 if(!$conn){
     die("La conexion fallo: ".mysqli_connect_error());
-}
+}else{
+    echo "La conexion funciona: ";
+    }
 
 ?>
