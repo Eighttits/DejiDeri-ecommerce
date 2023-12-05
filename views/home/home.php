@@ -1,5 +1,5 @@
 <?php 
-include 'app/partials/home/header.php';
+include '../../partials/header.php';
 
 
 ?>

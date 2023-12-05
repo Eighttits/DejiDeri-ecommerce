@@ -21,12 +21,12 @@ include '../../app/dbConnection.php';
     <link rel="icon" type="image/png" sizes="16x16" href="resources/img/favicon-16x16.png">
 
     
-    <link rel="stylesheet" href="../../resources/css/normalize.css">
-    <link rel="stylesheet" href="../../resources/css/main.css">
-    <link rel="stylesheet" href="../../resources/css/fonts.css">
-    <link rel="stylesheet" href="../../resources/css/swiper-bundle.css">
-    <link rel="stylesheet" href="../../resources/css/nice-select2.css">
-    <link rel="stylesheet" href="../../resources/css/login-register.css">
+    <link rel="stylesheet" href="resources/css/normalize.css">
+    <link rel="stylesheet" href="resources/css/main.css">
+    <link rel="stylesheet" href="resources/css/fonts.css">
+    <link rel="stylesheet" href="resources/css/swiper-bundle.css">
+    <link rel="stylesheet" href="resources/css/nice-select2.css">
+    <link rel="stylesheet" href="resources/css/login-register.css">
 
     <meta name="theme-color" content="#fafafa">
 </head>
