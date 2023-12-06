@@ -1,69 +1,89 @@
 <?php
-
-class productoModel {
-    private $conn;
-
-    public function __construct($conn) {
-        $this->conn = $conn;
-    }
+include '../../app/dbConnection.php';
+include '../../model/productoModel.php';
+$modeloProductos = new productoModel($conn);
+$action = $_POST['action'];
 
 
-    function obtenerCategorias()
-    {
-        $SqlConsulta = "SELECT * FROM categoria;";
-        $result = mysqli_query($this->conn, $SqlConsulta);
-        if($result){
-            return $result;
-        }
-    }
+switch($action){
+    case 'insert':
+        $idcategoria = $_POST['categoria'];
+        $nombre = $_POST['nombre'];
+        $descripcion = $_POST['descripcion'];
+        $precio = $_POST['precio'];
+        $stock = $_POST['stock'];
+        $imagen = $_FILES['img'];
 
-    public function insertarProducto($idcategoria, $nombre, $precio, $descripcion, $stock, $imgname){
-        $sqlConsulta = "INSERT INTO producto(id_categoria, nombre, precio, descripcion, stock, imagen)
-        VALUES($idcategoria, '$nombre', '$precio', '$descripcion', '$stock', '$imgname');";
-        $result = mysqli_query($this->conn, $sqlConsulta);
-        return $result;
-    }
+        $imgname = $imagen['name'];
+        move_uploaded_file($imagen['tmp_name'], '../../resources/imagenes-productos/'.$imgname);
 
-    ### funciones de consulta de informacion ###
-    public function obtenerProductos(){
-        $SqlConsulta = "SELECT p.*,c.nombre AS 'categoria'
-                        FROM producto p 
-                        INNER JOIN categoria c ON p.id_categoria = c.id
-                        ORDER BY p.id ASC;";
-        $result = mysqli_query($this->conn, $SqlConsulta);
-        if($result){
-            return $result;
-        }
-    }
 
-    public function eliminarProducto($idproducto){
-        $sqlConsulta = "DELETE FROM producto WHERE id = '$idproducto';";
-        $result = mysqli_query($this->conn, $sqlConsulta);
-        return $result;
-    }
-
-    public function obtenerProductoPorId($idProducto){
-        $sqlConsulta = "SELECT * FROM producto WHERE id = '$idProducto';";
-        $result = mysqli_query($this->conn, $sqlConsulta);
-        return $result;
-
-    }
-    
-    public function editarProducto($idProducto, $idcategoria, $nombre, $precio, $descripcion, $stock, $imgname){
-        $sqlConsulta = "UPDATE producto
-                        SET id_categoria = $idcategoria,
-                            nombre = '$nombre',
-                            precio = '$precio',
-                            descripcion = '$descripcion',
-                            stock = '$stock',
-                            imagen = '$imgname'
-                        WHERE id = $idProducto;";
         
-        $result = mysqli_query($this->conn, $sqlConsulta);
-        return $result;
-    }
-    
-}
 
+        $result = $modeloProductos->insertarProducto($idcategoria, $nombre, $precio, $descripcion, $stock, $imgname);
+    
+        if($result == 1){
+            $response['msg'] = "El producto se registro correctamente.";
+            $response['status'] = true;
+            echo json_encode($response);
+        } else {
+            $response['msg'] = "Error al registrar el producto.";
+            $response['status'] = false;
+            echo json_encode($response);
+        }
+    break;
+    case 'edit':
+        $idcategoria = $_POST['categoria'];
+        $nombre = $_POST['nombre'];
+        $descripcion = $_POST['descripcion'];
+        $precio = $_POST['precio'];
+        $stock = $_POST['stock'];
+        $idproducto = $_POST['idProducto'];
+        $img_actual = $_POST['img_actual'];
+    
+        $imagen = $_FILES['img'];
+        $imgname = '';
+    
+        // Verifica si se ha subido una nueva imagen
+        if ($imagen['size'] > 0) {
+            // Si se ha subido una nueva imagen, procesa y guarda el archivo
+            $imgname = $imagen['name'];
+            move_uploaded_file($imagen['tmp_name'], '../../resources/imagenes-productos/'.$imgname);
+        } else {
+            // Si no se ha subido una nueva imagen, utiliza la imagen actual
+            $imgname = $img_actual;
+        }
+    
+        $result = $modeloProductos->editarProducto($idproducto ,$idcategoria, $nombre, $precio, $descripcion, $stock, $imgname);
+    
+        if($result == 1){
+            $response['msg'] = "El producto se editó correctamente.";
+            $response['status'] = true;
+            echo json_encode($response);
+        } else {
+            $response['msg'] = "Error al editar el producto.";
+            $response['status'] = false;
+            echo json_encode($response);
+        }
+        break;
+    
+    case 'delete':
+        $idproducto = $_POST['idProducto'];
+        $result = $modeloProductos->eliminarProducto($idproducto);
+        if($result == 1){
+            $response['msg'] = "El producto se elimino correctamente.";
+            $response['status'] = true;
+            echo json_encode($response);
+        } else {
+            $response['msg'] = "Error al eliminar el producto.";
+            $response['status'] = false;
+            echo json_encode($response);
+        }
+    break;
+
+    
+    default:
+    break;
+}
 
 ?>
