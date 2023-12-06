@@ -1,5 +1,5 @@
 <?php
-include '../../app/dbConnection.php';
+include 'app/dbConnection.php';
 ?>
 <!doctype html>
 <html class="no-js" lang="en">
@@ -16,17 +16,17 @@ include '../../app/dbConnection.php';
     <meta property="og:image" content="">
 
 
-    <link rel="apple-touch-icon" sizes="180x180" href="../../resources/img/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="../../resources/img/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="../../resources/img/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="resources/img/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="resources/img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="resources/img/favicon-16x16.png">
 
     
-    <link rel="stylesheet" href="../../resources/css/normalize.css">
-    <link rel="stylesheet" href="../../resources/css/main.css">
-    <link rel="stylesheet" href="../../resources/css/fonts.css">
-    <link rel="stylesheet" href="../../resources/css/swiper-bundle.css">
-    <link rel="stylesheet" href="../../resources/css/nice-select2.css">
-    <link rel="stylesheet" href="../../resources/css/login-register.css">
+    <link rel="stylesheet" href="resources/css/normalize.css">
+    <link rel="stylesheet" href="resources/css/main.css">
+    <link rel="stylesheet" href="resources/css/fonts.css">
+    <link rel="stylesheet" href="resources/css/swiper-bundle.css">
+    <link rel="stylesheet" href="resources/css/nice-select2.css">
+    <link rel="stylesheet" href="resources/css/login-register.css">
 
     <meta name="theme-color" content="#fafafa">
 </head>
