@@ -1,7 +1,5 @@
 <?php 
-include '../../partials/header.php';
-
-
+include 'partials/home/header.php';
 ?>
 
 <div class="main digital-store">
@@ -1179,4 +1177,4 @@ include '../../partials/header.php';
 </div>
 <!-- main content area -->
 
-<?php include 'app/partials/home/footer.php' ?>
+<?php include 'partials/home/footer.php' ?>

@@ -11,11 +11,4 @@ $encode = constant("BD_ENCODE");
 $conn = mysqli_connect($servername, $username, $password, $database);
 
 mysqli_set_charset($conn, $encode);
-
-if(!$conn){
-    die("La conexion fallo: ".mysqli_connect_error());
-}else{
-    echo "La conexion funciona: ";
-    }
-
 ?>
