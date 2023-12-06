@@ -1,6 +1,10 @@
 <?php 
 include 'partials/home/header.php';
+include '../../model/productoModel.php';
+
+
 ?>
+
 
 <div class="main digital-store">
 
